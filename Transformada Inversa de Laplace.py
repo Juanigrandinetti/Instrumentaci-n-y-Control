@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import sympy as sym
+
+t2 = sym.Symbol('t', Real = True)
+t = np.arange(0, 400, 0.1)
+sin1 = 0.1*np.sin(0.04*t)
+sin2 = 0.28*np.sin(0.02*t)
+cos2 = np.cos(0.02*t)
+cos1 = -np.cos(0.04*t)
+c1 = 45 + 22.5*np.exp(-0.015*t)*(sin1 + cos1)
+c2 = 29.2 + 20*np.exp(-0.015*t)*(0.28*sin2 - cos2)
+f1 = 45 + 22.5*sym.exp(-0.015*t2)*(0.1*sym.sin(0.04*t2) - sym.cos(0.04*t2))
+f2 = 29.2 + 20*sym.exp(-0.015*t2)*(0.28*sym.sin(0.02*t2) - sym.cos(0.02*t2))
+plt.plot(c1)
+plt.title(r'c(t) = $'+str(sym.latex(f1))+'$')
+plt.axhline(y = 45, label = 'c(t) = 45', color = 'red')
+plt.legend()
+plt.grid()
+plt.show()
+plt.plot(c2)
+plt.title(r'c(t) = $' + str(sym.latex(f2) + '$'))
+plt.axhline(y = 29.2, label = 'c(t) = 29.2', color = 'red')
+plt.legend()
+plt.grid()
+plt.show()
